@@ -1,5 +1,5 @@
 function getCheckedCheckboxValuesByName(name) {
-  let return_val = "", counter = 0;
+  let return_val = [], counter = 0;
 
   $('[name="'+name+'"]').each( function (){
     if($(this).prop('checked') == true){
