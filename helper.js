@@ -74,3 +74,16 @@ function base64Decode(text) {
     text = text.replaceAll("==", "");
     return Base64.decode(text);
 }
+
+function germanDateFormatToTime(date) {
+    try {
+        let numbers = date.split('.');
+        numbers[0] = parseInt(numbers[0]);
+        numbers[1] = parseInt(numbers[1]);
+        numbers[2] = parseInt(numbers[2]);
+
+        return numbers[0]*24*60*60 + numbers[1]*30*24*60*60 + numbers[2]*12*30*24*60*60;
+    } catch (error) {
+        return 0;
+    }
+}
