@@ -76,14 +76,16 @@ function base64Decode(text) {
 }
 
 function germanDateFormatToTime(date) {
+    let time = 0;
     try {
         let numbers = date.split('.');
         numbers[0] = parseInt(numbers[0]);
         numbers[1] = parseInt(numbers[1]);
         numbers[2] = parseInt(numbers[2]);
 
-        return numbers[0]*24*60*60 + numbers[1]*30*24*60*60 + numbers[2]*12*30*24*60*60;
+        time = numbers[0]*24*60*60 + numbers[1]*30*24*60*60 + numbers[2]*12*30*24*60*60;
     } catch (error) {
-        return 0;
+        time = 0;
     }
+    return isNaN(time) == true || time == null? 0 : time;
 }
