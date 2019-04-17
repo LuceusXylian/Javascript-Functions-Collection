@@ -9,3 +9,18 @@ function getCheckedCheckboxValuesByName(name) {
   });
   return return_val;
 }
+
+function numberControll(input_name, numberToAdd) {
+  let this_number_var = parseInt( $(input_name).val() );
+
+  if ( !$.isNumeric( $(input_name).val() ) || this_number_var < 1 ) {
+    $(input_name).val(1);
+  } else if ( this_number_var > 100 ) {
+    $(input_name).val(99);
+  } else {
+    let calculated_var = this_number_var + parseInt(numberToAdd);
+    if (calculated_var > 0 && calculated_var < 100) {
+      $(input_name).val(calculated_var);
+    }
+  }
+}
