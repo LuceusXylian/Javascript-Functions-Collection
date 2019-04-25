@@ -26,8 +26,8 @@ function numberControll(input_name, numberToAdd) {
 }
 
 Array.prototype.extend = function (array) {
-  if (Array.isArray(array) == true) {
-	  array.forEach(function(v) {this.push(v)}, this);
+	if (Array.isArray(array) == true) {
+		array.forEach(function(v) {this.push(v)}, this);
 		return array.length;
 	}
 	return 0;
