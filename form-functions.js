@@ -1,3 +1,17 @@
+function inputRequiredCheck(inputArray) {
+	if (isArray(inputArray)) {
+		array.forEach(element => {
+			if(element.val().length == 0) {
+				return false;
+			}
+		});
+		return true;
+	} else {
+		return inputArray.val().length != 0;
+	}
+	return false;
+}
+
 function getCheckedCheckboxValuesByName(name) {
   let return_val = [], counter = 0;
 
