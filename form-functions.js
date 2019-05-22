@@ -1,15 +1,20 @@
 function inputRequiredCheck(inputArray) {
-	if (isArray(inputArray)) {
-		array.forEach(element => {
-			if(element.val().length == 0) {
-				return false;
+	let bool = true;
+
+	if (inputArray.length > 1) {
+		for (let i = 0; i < inputArray.length; i++) {
+			const element = $(inputArray[i]);
+				
+			if(element.val().trim() == "") {
+				element.css( 'border', '1px solid red');
+				bool = false;
 			}
-		});
-		return true;
+		}
 	} else {
-		return inputArray.val().length != 0;
+		bool = inputArray.val().length != 0;
 	}
-	return false;
+
+	return bool;
 }
 
 function getCheckedCheckboxValuesByName(name) {
