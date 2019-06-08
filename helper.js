@@ -78,7 +78,7 @@ function germanDateFormatToTime(date) {
         numbers[1] = parseInt(numbers[1]);
         numbers[2] = parseInt(numbers[2]);
 
-        time = numbers[0]*24*60*60 + numbers[1]*30*24*60*60 + numbers[2]*12*30*24*60*60;
+        time = numbers[0]*86400 + numbers[1]*2592000 + numbers[2]*31104000;
     } catch (error) {
         time = 0;
     }
