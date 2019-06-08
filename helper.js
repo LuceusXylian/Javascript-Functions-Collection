@@ -3,7 +3,7 @@ function setCookie(cname, cvalue, exdays = -1) {
         document.cookie = cname + "=" + cvalue + ";" + ";path=/";
     } else {
         var d = new Date();
-        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        d.setTime(d.getTime() + (exdays*86400000));
         document.cookie = cname + "=" + cvalue + ";" + "expires=" + d.toUTCString() + ";path=/";
     }
 }
