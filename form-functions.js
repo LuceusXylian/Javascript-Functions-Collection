@@ -8,6 +8,8 @@ function inputRequiredCheck(inputArray) {
 			if(element.val().trim() == "") {
 				element.css( 'border', '1px solid red');
 				bool = false;
+			} else {
+				element.css( 'border', '');
 			}
 		}
 	} else {
