@@ -46,6 +46,17 @@ function numberControll(input_name, numberToAdd) {
   }
 }
 
+function inputDezimalCurrencyCheck(object) {
+	var val = parseFloat( (object.value).replace(",", ".") ).toFixed(2);
+	if(val != NaN && val != "NaN" && val != null) {
+		val = val.replace(".", ",");
+		val += " €";
+	} else {
+		val = "";
+	} 
+	object.value = val;
+}
+
 Array.prototype.extend = function (array) {
 	if (Array.isArray(array) == true) {
 		array.forEach(function(v) {this.push(v)}, this);
