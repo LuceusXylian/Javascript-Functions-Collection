@@ -17,7 +17,7 @@ class Autocomplete {
                +this.autocomplete_list+'"></ul></div>');
 		    }
 		
-		
+		this.events();
 	  }
 	
     setConfig(use_plz, stadtteil_mit_anzeigen, plz_mit_anzeigen, nur_ort_anzeigen, ac_container_addTopPos, ac_container_fixed) {
@@ -76,4 +76,18 @@ class Autocomplete {
         });
     }
 
+	events() {
+		var ac = this;
+		var is_ac_event = false;
+		$("#"+ac.input_target)
+			.on("keyup", function() { is_ac_event = true; ac.ac_request(); is_ac_event = false; })
+			.on("click", function() { is_ac_event = true; ac.ac_request(); is_ac_event = false; });
+		$(window).on("click", function() {
+			setTimeout(() => {
+				if (is_ac_event == false) {
+					$("#"+ac.ac_container).css("display", "none");
+				}
+			}, 2);
+		});
+	}
 }
