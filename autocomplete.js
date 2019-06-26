@@ -80,7 +80,14 @@ class Autocomplete {
 		var ac = this;
 		var is_ac_event = false;
 		$("#"+ac.input_target)
-			.on("keyup", function() { is_ac_event = true; ac.ac_request(); is_ac_event = false; })
+			.on("keyup", function(e) { 
+				if(e.keyCode === 13) {  
+					$("#"+ac.input_target).val( $( $("#autocomplete_container").children()[0] ).html() );
+					$("#"+ac.ac_container).css("display", "none");
+				} else {
+					is_ac_event = true; ac.ac_request(); is_ac_event = false; 
+				}
+			})
 			.on("click", function() { is_ac_event = true; ac.ac_request(); is_ac_event = false; });
 		$(window).on("click", function() {
 			setTimeout(() => {
