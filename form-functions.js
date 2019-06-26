@@ -46,11 +46,11 @@ function numberControll(input_name, numberToAdd) {
   }
 }
 
-function inputDezimalCurrencyCheck(object) {
-	var val = parseFloat( (object.value).replace(",", ".") ).toFixed(2);
+function inputDecimalCheck(object, dp, suffix) {
+	var val = parseFloat( (object.value).replace(",", ".") ).toFixed(dp);
 	if(val != NaN && val != "NaN" && val != null) {
 		val = val.replace(".", ",");
-		val += " €";
+		val += suffix;
 	} else {
 		val = "";
 	} 
