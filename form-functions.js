@@ -46,10 +46,10 @@ function numberControll(input_name, numberToAdd) {
   }
 }
 
-function inputDecimalCheck(object, dp, suffix) {
-	var val = parseFloat( (object.value).replace(",", ".") ).toFixed(dp);
+function inputDecimalCheck(object, p = ".", dp = 2, suffix = "") {
+	var val = parseFloat( (object.value).replace(p, ".") ).toFixed(dp);
 	if(val != NaN && val != "NaN" && val != null) {
-		val = val.replace(".", ",");
+		val = val.replace(".", p);
 		val += suffix;
 	} else {
 		val = "";
