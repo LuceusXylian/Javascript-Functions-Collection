@@ -57,6 +57,20 @@ function inputDecimalCheck(object, p = ".", dp = 2, suffix = "") {
 	object.value = val;
 }
 
+function inputRatingStars(name, bw_stern) {
+    var bw_stern = parseInt(bw_stern);
+    $("."+name+".print_bwstars").html(bw_stern);
+    $('input:hidden[name='+name+']').val(bw_stern);
+
+    for (let i = 1; i <= 5; i++) {
+        if(bw_stern >= i) {
+            $("."+name+".str"+i+" i").addClass('active');
+        } else {
+            $("."+name+".str"+i+" i").removeClass('active');
+        }
+    }
+}
+
 Array.prototype.extend = function (array) {
 	if (Array.isArray(array) == true) {
 		array.forEach(function(v) {this.push(v)}, this);
