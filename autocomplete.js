@@ -88,13 +88,10 @@ class Autocomplete {
 					is_ac_event = true; ac.ac_request(); is_ac_event = false; 
 				}
 			})
-			.on("click", function() { is_ac_event = true; ac.ac_request(); is_ac_event = false; });
-		$(window).on("click", function() {
-			setTimeout(() => {
-				if (is_ac_event == false) {
-					$("#"+ac.ac_container).css("display", "none");
-				}
-			}, 2);
-		});
+			.on("click", function( ) { is_ac_event = true; ac.ac_request(); is_ac_event = false; })
+			.on("change", function( ) { 
+				$("#"+ac.input_target).val( $( $("#autocomplete_container").children()[0] ).html() );
+				$("#"+ac.ac_container).css("display", "none");
+			});
 	}
 }
