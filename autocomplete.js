@@ -16,7 +16,7 @@ class Autocomplete {
         this.ac_container_fixed = false;
 
         if ( $("#"+this.ac_container).length == 0 ) {
-            $("body").append('<div id="'+this.ac_container+'" style="display: none; position: absolute; max-width: calc(100% - ' + this.ac_container_addTopPos +'px); width: 417px; top: 0; left: 0; overflow: auto; max-height: 110px; z-index: 99999 !important;" class="ac_results"><ul id="'
+            $("body").append('<div id="'+this.ac_container+'" style="display: none; position: absolute; max-width: calc(100% - 20px); width: 417px; top: 0; left: 0; overflow: auto; max-height: 110px; z-index: 99999 !important;" class="ac_results"><ul id="'
             +this.autocomplete_list+'"></ul></div>');
         }
         this.events();
@@ -31,7 +31,6 @@ class Autocomplete {
         this.ac_container_addTopPos = ac_container_addTopPos;
         this.ac_container_fixed = ac_container_fixed;
 
-        $("#"+this.ac_container).css("max-width", 'calc(100% - ' + this.ac_container_addTopPos +'px');
         $("#"+this.ac_container).css("position", this.ac_container_fixed? "fixed" : "absolute");
     }
     
@@ -71,7 +70,7 @@ class Autocomplete {
                     }
                     $("#"+this_ac_container).html(ac_list_content);
 
-                    let input_target_pos = $("#"+this_input_target).position();
+                    let input_target_pos = $("#"+this_input_target).offset();
                     $("#"+this_ac_container)
                         .css("left", input_target_pos.left)
                         .css("top", input_target_pos.top + this_ac_container_addTopPos)
@@ -94,7 +93,7 @@ class Autocomplete {
                 }
             })
             .on("click", function( ) { ac.ac_request(); });
-        $(window).on("click", function() {
+        $(body).on("click", function() {
             setTimeout(() => {
                 if (is_ac_event == false) {
                     $("#"+ac.ac_container).css("display", "none");
