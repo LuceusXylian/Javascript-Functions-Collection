@@ -1,22 +1,14 @@
 function inputRequiredCheck(inputArray) {
-	let bool = true;
-
-	if (inputArray.length > 1) {
-		for (let i = 0; i < inputArray.length; i++) {
-			const element = $(inputArray[i]);
-				
-			if(element.val().trim() == "") {
-				element.css( 'border', '1px solid red');
-				bool = false;
-			} else {
-				element.css( 'border', '');
-			}
-		}
-	} else {
-		bool = inputArray.val().length != 0;
-	}
-
-	return bool;
+    for (let i = 0; i < inputArray.length; i++) {
+        const element = $(inputArray[i]);
+        if(element.val().trim() == "") {
+            element.css('border', '1px solid red');
+            return false;
+        } else {
+            element.css('border', '');
+        }
+    }
+	return true;
 }
 
 function getCheckedCheckboxValuesByName(name) {
