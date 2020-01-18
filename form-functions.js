@@ -1,14 +1,15 @@
 function inputRequiredCheck(inputArray) {
+    let ret = true;
     for (let i = 0; i < inputArray.length; i++) {
         const element = $(inputArray[i]);
         if(element.val().trim() == "") {
             element.css('border', '1px solid red');
-            return false;
+            ret = false;
         } else {
             element.css('border', '');
         }
     }
-	return true;
+	return ret;
 }
 
 function getCheckedCheckboxValuesByName(name) {
