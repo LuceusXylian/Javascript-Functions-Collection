@@ -73,17 +73,29 @@ var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456
 function createIsoDateFromString(date) {
     date_array = date.split("."); //dd.mm.yyyy
     if (date_array.length == 3) {
-        return date_array[2] +"-"+ date_array[1] +"-"+ date_array[0];
-    } 
-
-    date_array = date.split("/"); //mm/dd/yyyy 
+        d = parseInt(date_array[0]);
+        m = parseInt(date_array[1]);
+        y = parseInt(date_array[2]);
+    } else {
+        date_array = date.split("/"); //mm/dd/yyyy 
+        if (date_array.length == 3) {
+            d = parseInt(date_array[1]);
+            m = parseInt(date_array[0]);
+            y = parseInt(date_array[2]);
+            return date_array[2] +"-"+ date_array[0] +"-"+ date_array[1];
+        } else {
+            date_array = date.split("-"); //yyyy-mm-dd
+            if (date_array.length == 3) {
+                d = parseInt(date_array[2]);
+                m = parseInt(date_array[1]);
+                y = parseInt(date_array[0]);
+            }
+        }
+    }
     if (date_array.length == 3) {
-        return date_array[2] +"-"+ date_array[0] +"-"+ date_array[1];
-    } 
-
-    date_array = date.split("-"); //yyyy-mm-dd
-    if (date_array.length == 3) {
-        return date_array[0] +"-"+ date_array[1] +"-"+ date_array[2];
+        if(d < 10) d = "0"+d
+        if(m < 10) m = "0"+m
+        return y +"-"+ m +"-"+ d;
     }
     return "";
 }
